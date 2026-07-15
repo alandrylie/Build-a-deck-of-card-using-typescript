@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+}
+
+#headerDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed;
+}
+
+#playersDisplay,
+#numOfCardsPerPlayer {
+    width: 1rem;
+    height: 1rem;
+}
+
+.numberOfPlayers {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 5px;
+}
+
+.subtract {
+    color: red;
+}
+.add {
+    color: green;
+}
+#display {
+    background-color: aquamarine;
+    width: 1rem;
+    height: 1rem;
+}
+.remainingCards {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button {
+    border-radius: 5px;
+}
+
+.buttonWrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
