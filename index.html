@@ -17,19 +17,19 @@
                 <p>Number of players</p>
 
                 <button class="subtract">-</button>
-                <input type="text" id="playersDisplay" placeholder=0>
+                <input type="number" id="playersDisplay" placeholder=0 readonly>
                 <button class="add">+</button>
             </div>
             <div class="numberOfPlayers">
                 <p>Cards per player</p>
 
                 <button class="subtract">-</button>
-                <input type="text" id="numOfCardsPerPlayer" placeholder=0>
+                <input type="number" id="numOfCardsPerPlayerDisplay" placeholder=0 readonly>
                 <button class="add">+</button>
             </div>
             <div class="remainingCards">
                 <p>Remaining Cards</p>
-                <input type="text" id="display" placeholder=0>
+                <input type="number" id="remainingCardsdisplay" placeholder=0 readonly>
             </div>
         </div>
     </header>
@@ -43,7 +43,7 @@
             <button id="deal">Deal</button>
         </Div>
     </div>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 
 </html>

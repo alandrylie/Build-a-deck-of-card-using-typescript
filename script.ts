@@ -64,7 +64,61 @@ class Deck implements Deck {
 
 const deck = new Deck();
 
-const card = new Card(5, "❤️");
+// functionality of HTML starts here
+
+const addPlayer = document.getElementsByClassName("add")[0];
+const addCard = document.getElementsByClassName("add")[1];
+const subtractPlayer = document.getElementsByClassName("subtract")[0];
+const subtractCard = document.getElementsByClassName("subtract")[1];
+const playersDisplay = document.getElementById("playersDisplay") as HTMLInputElement;
+const numOfCardsPerPlayerDisplay = document.getElementById(
+    "numOfCardsPerPlayerDisplay"
+) as HTMLInputElement;
+const remainingCardsDisplay = document.getElementById("remainingCardsDisplay");
+let numOfPlayers: number = 0;
+let numOfCards: number = 0;
+const zero: number = 0;
+
+//Add Players
+
+addPlayer!.addEventListener("click", function () {
+    numOfPlayers += 1;
+    console.log("Add a Player");
+    playersDisplay.value = numOfPlayers.toString();
+});
+
+subtractPlayer!.addEventListener("click", function () {
+    if (numOfPlayers <= 1) {
+         console.log("if branch ran", playersDisplay.valueAsNumber);
+        playersDisplay.value = zero.toString();
+        numOfPlayers = 0;
+    } else {
+        console.log("else branch ran", playersDisplay.valueAsNumber);
+        numOfPlayers -= 1;
+        playersDisplay.value = numOfPlayers.toString();
+    }
+});
+
+// Add Cards per player
+
+addCard!.addEventListener("click", function () {
+    numOfCards += 1;
+    numOfCardsPerPlayerDisplay.value = numOfCards.toString();
+});
+
+subtractCard!.addEventListener("click", function () {
+    if (numOfCards <= 1) {
+        numOfCardsPerPlayerDisplay.value = zero.toString();
+        numOfCards = 0;
+    } else {
+        numOfCards -= 1;
+        numOfCardsPerPlayerDisplay.value = numOfCards.toString();
+    }
+});
+
+// Code below was used to test in terminal while building the classes & functions not for final product.
+
+/* const card = new Card(5, "❤️");
 console.log(card.suite);
 console.log(card.value);
 
@@ -79,4 +133,4 @@ console.log(player1);
 deck.dealCards(7);
 console.log(player1);
 console.log(deck.deckOfCards.length);
-deck.dealCards(45);
+deck.dealCards(45); */
