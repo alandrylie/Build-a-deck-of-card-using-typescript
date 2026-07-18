@@ -33,6 +33,7 @@ class Deck implements Deck {
                 this.deckOfCards.push(tempDeck);
             });
         });
+        console.log(deck.deckOfCards);
     }
 
     shuffleBot() {
@@ -74,12 +75,12 @@ const playersDisplay = document.getElementById("playersDisplay") as HTMLInputEle
 const numOfCardsPerPlayerDisplay = document.getElementById(
     "numOfCardsPerPlayerDisplay"
 ) as HTMLInputElement;
-const remainingCardsDisplay = document.getElementById("remainingCardsDisplay");
+const remainingCardsDisplay = document.getElementById("remainingCardsDisplay") as HTMLInputElement;
 let numOfPlayers: number = 0;
 let numOfCards: number = 0;
 const zero: number = 0;
 
-//Add Players
+// Players
 
 addPlayer!.addEventListener("click", function () {
     numOfPlayers += 1;
@@ -89,7 +90,7 @@ addPlayer!.addEventListener("click", function () {
 
 subtractPlayer!.addEventListener("click", function () {
     if (numOfPlayers <= 1) {
-         console.log("if branch ran", playersDisplay.valueAsNumber);
+        console.log("if branch ran", playersDisplay.valueAsNumber);
         playersDisplay.value = zero.toString();
         numOfPlayers = 0;
     } else {
@@ -99,7 +100,7 @@ subtractPlayer!.addEventListener("click", function () {
     }
 });
 
-// Add Cards per player
+//  Cards per player
 
 addCard!.addEventListener("click", function () {
     numOfCards += 1;
@@ -115,6 +116,42 @@ subtractCard!.addEventListener("click", function () {
         numOfCardsPerPlayerDisplay.value = numOfCards.toString();
     }
 });
+
+// Buttons in header
+
+const reset = document.getElementById("reset");
+const buildTheDeck = document.getElementById("buildTheDeck");
+const deal = document.getElementById("deal");
+
+reset!.addEventListener("click", function () {
+    numOfCards = 0;
+    numOfPlayers = 0;
+    numOfCardsPerPlayerDisplay.value = numOfCards.toString();
+    playersDisplay.value = zero.toString();
+    remainingCardsDisplay.value = zero.toString();
+    deck.deckOfCards = [];
+    player1 = [];
+});
+
+buildTheDeck!.addEventListener("click", function () {
+    deck.createDeck();
+    remainingCardsDisplay.value = deck.deckOfCards.length.toString();
+});
+
+deal?.addEventListener("click", function () {
+    deck.shuffleBot();
+    deck.dealCards(numOfCards);
+    player1.forEach((cardFace) => {
+        let listItem = document.createElement("li");
+        listItem.innerText = `The ${cardFace.value} of ${cardFace.suite}`;
+        firstPlayerDisplay!.appendChild(listItem);
+    });
+    remainingCardsDisplay.value = deck.deckOfCards.length.toString();
+});
+
+// Displaying the cards to the user
+
+const firstPlayerDisplay = document.getElementById("firstPlayer");
 
 // Code below was used to test in terminal while building the classes & functions not for final product.
 

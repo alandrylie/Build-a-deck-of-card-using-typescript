@@ -20,6 +20,7 @@ class Deck {
                 this.deckOfCards.push(tempDeck);
             });
         });
+        console.log(deck.deckOfCards);
     }
     shuffleBot() {
         for (let i = this.deckOfCards.length - 1; i > 0; i--) {
@@ -58,7 +59,7 @@ const remainingCardsDisplay = document.getElementById("remainingCardsDisplay");
 let numOfPlayers = 0;
 let numOfCards = 0;
 const zero = 0;
-//Add Players
+// Players
 addPlayer.addEventListener("click", function () {
     numOfPlayers += 1;
     console.log("Add a Player");
@@ -76,7 +77,7 @@ subtractPlayer.addEventListener("click", function () {
         playersDisplay.value = numOfPlayers.toString();
     }
 });
-// Add Cards per player
+//  Cards per player
 addCard.addEventListener("click", function () {
     numOfCards += 1;
     numOfCardsPerPlayerDisplay.value = numOfCards.toString();
@@ -91,6 +92,35 @@ subtractCard.addEventListener("click", function () {
         numOfCardsPerPlayerDisplay.value = numOfCards.toString();
     }
 });
+// Buttons in header
+const reset = document.getElementById("reset");
+const buildTheDeck = document.getElementById("buildTheDeck");
+const deal = document.getElementById("deal");
+reset.addEventListener("click", function () {
+    numOfCards = 0;
+    numOfPlayers = 0;
+    numOfCardsPerPlayerDisplay.value = numOfCards.toString();
+    playersDisplay.value = zero.toString();
+    remainingCardsDisplay.value = zero.toString();
+    deck.deckOfCards = [];
+    player1 = [];
+});
+buildTheDeck.addEventListener("click", function () {
+    deck.createDeck();
+    remainingCardsDisplay.value = deck.deckOfCards.length.toString();
+});
+deal?.addEventListener("click", function () {
+    deck.shuffleBot();
+    deck.dealCards(numOfCards);
+    player1.forEach((cardFace) => {
+        let listItem = document.createElement("li");
+        listItem.innerText = `The ${cardFace.value} of ${cardFace.suite}`;
+        firstPlayerDisplay.appendChild(listItem);
+    });
+    remainingCardsDisplay.value = deck.deckOfCards.length.toString();
+});
+// Displaying the cards to the user
+const firstPlayerDisplay = document.getElementById("firstPlayer");
 export {};
 // Code below was used to test in terminal while building the classes & functions not for final product.
 /* const card = new Card(5, "❤️");
