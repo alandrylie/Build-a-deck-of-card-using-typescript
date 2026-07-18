@@ -155,7 +155,7 @@ const firstPlayerDisplay = document.getElementById("firstPlayer");
 
 // Code below was used to test in terminal while building the classes & functions not for final product.
 
-/* const card = new Card(5, "❤️");
+/*const card = new Card(5, "❤️");
 console.log(card.suite);
 console.log(card.value);
 
